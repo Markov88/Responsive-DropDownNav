@@ -1,0 +1,158 @@
+body {
+    font: 12px/1.5 Helvetica, sans-serif;
+    background: #EEE;
+    padding: 2rem;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body>header:first-of-type {
+    border-bottom: 2px solid #000;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+header .site-title {
+    min-width: 20vw;
+    font-weight: bold;
+    font-size: 3em;
+    text-transform: uppercase;
+    padding: 1rem 1rem;
+    margin: 0;
+}
+
+.nav {
+    align-self: center;
+}
+
+.nav ul {
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    margin: 0;
+}
+
+.nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -0.5rem;
+    width: 10rem;
+}
+
+.nav ul ul ul {
+    top: -0.5rem;
+    right: 100%;
+    left: inherit;
+}
+
+.nav ul li {
+    display: block;
+    list-style: none outside;
+    position: relative;
+    text-align: center;
+}
+
+.nav>ul>li>ul li:not(:last-child) {
+    padding-bottom: 0.5rem;
+}
+
+.nav>ul>li {
+    padding: 0 0.5rem 0 0;
+}
+
+.nav ul li:hover>a {}
+
+.nav ul li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    background: #333;
+    color: #FFF;
+}
+
+.nav ul li a:hover, .nav ul li:hover>a {
+    background: rgb(114, 114, 114);
+}
+
+#main-nav, #toggle {
+    display: none;
+}
+
+#toggle {
+    position: relative;
+    flex: 1 0 100%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding: 1rem 0;
+    font-size: 18px;
+}
+
+#toggle:before {
+    display: block;
+    content: '';
+    position: relative;
+    padding-right: 0.3rem;
+    font-weight: bold;
+}
+
+main {
+    padding-top: 1rem;
+    display: flex;
+}
+
+main .box {
+    height: 30vh;
+    margin: 0.5rem;
+    flex: 1 0 auto;
+    background: rgb(190, 190, 190);
+}
+
+@media screen and (max-width: 800px) {
+    .site-title {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+    }
+    #toggle {
+        display: flex;
+        margin: 0 auto;
+    }
+    .nav {
+        display: none;
+        border-top: 2px solid #000;
+    }
+    .nav ul li:not(:first-child) {
+        padding-top: 0.5rem;
+    }
+    #main-nav:checked+header .nav {
+        display: block;
+        flex: 1 0 100%;
+    }
+    #main-nav:checked+header #toggle:before {
+        content: 'X';
+    }
+    main {
+        flex-direction: column;
+    }
+    main .box {
+        flex: 1 0 auto;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .nav ul {
+        display: flex;
+    }
+    .nav ul li:hover>ul {
+        display: block;
+    }
+}
